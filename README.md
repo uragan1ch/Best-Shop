@@ -1,6 +1,7 @@
-<<<<<<< HEAD
 # Best-Shop
+
 =======
+
 # Project Name: BEST SHOP
 
 ## Author
@@ -61,4 +62,5 @@ npm run lint | Check code with ESLint and Stylelint |
 Edit the 'build:sass' script in package.json:
 Example:
 "build:sass": "sass src/scss/main.scss:dist/css/style.css src/scss/layouts/header.scss:dist/css/header.css src/scss/layouts/footer.scss:dist/css/footer.css"
->>>>>>> 808b82f (done)
+
+> > > > > > > 808b82f (done)
