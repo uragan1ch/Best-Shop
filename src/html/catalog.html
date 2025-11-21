@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalog</title>
+    <link rel="stylesheet" href="../../dist/css/style.css" />
+    <link rel="stylesheet" href="../../dist/css/footer.css" />
+    <link rel="stylesheet" href="../../dist/css/header.css" />
+  </head>
+  <div class="modal" id="loginModal">
+    <div class="modal__content">
+      <button class="modal__close" id="closeLoginModal">&times;</button>
+
+      <h2 class="modal__title">LOG IN</h2>
+
+      <form class="modal__form" id="loginForm" novalidate>
+        <label for="emailInput">Email address *</label>
+        <input type="email" id="emailInput" required />
+
+        <p id="validationMessage"></p>
+
+        <label for="passwordInput">Password *</label>
+        <div class="password-field">
+          <input type="password" id="passwordInput" required />
+          <span class="password-toggle" id="togglePasswordBtn">
+            <img
+              id="passwordToggleImg"
+              src="../assets/images/modal/eye.svg"
+              alt="modal eye"
+            />
+          </span>
+        </div>
+
+        <div class="modal__actions">
+          <label class="remember">
+            <input type="checkbox" /> Remember me
+          </label>
+          <a href="#" class="forgot">Forgot Your Password?</a>
+        </div>
+
+        <button type="submit" class="modal__btn">LOG IN</button>
+      </form>
+    </div>
+  </div>
+  <body>
+    <header class="header">
+      <div class="header__top">
+        <div class="header__socials">
+          <a href="#" aria-label="Facebook">
+            <img
+              src="../assets/images/homepage/social/facebook (1).svg"
+              alt="facebook icon"
+            />
+          </a>
+          <a href="#" aria-label="Twitter">
+            <img
+              src="../assets/images/homepage/social/twitter.svg"
+              alt="twitter icon"
+            />
+          </a>
+          <a href="#" aria-label="Instagram">
+            <img
+              src="../assets/images/homepage/social/instagram.svg"
+              alt="instagram icon"
+            />
+          </a>
+        </div>
+
+        <div class="header__logo">
+          <a href="../index.html">
+            <img
+              src="../assets/images/homepage/logo_best_shop.jpg"
+              alt="BEST SHOP logo"
+              class="header__logo-icon"
+            />
+            <h1 class="header__logo-title">BEST SHOP</h1></a
+          >
+        </div>
+
+        <div class="header__actions">
+          <button class="header__btn" id="account-icon" aria-label="Аккаунт">
+            <img src="../assets/images/homepage/user/user.svg" alt="profile" />
+          </button>
+
+          <button class="header__btn" id="cart-icon" aria-label="Корзина">
+            <a href="../html/cart.html">
+              <img
+                src="../assets/images/homepage/user/shopping-cart.svg"
+                alt="user cart"
+              />
+              <span id="cart-counter" class="cart-counter">0</span>
+            </a>
+          </button>
+
+          <button class="header__burger" id="burger" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="header__nav" id="headerNav">
+        <button
+          class="header__close"
+          id="closeMenu"
+          aria-label="Закрыть меню"
+        ></button>
+        <ul class="header__menu">
+          <li class="header__menu-item">
+            <a href="../index.html" class="header__menu-link">Home</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="../html/catalog.html" class="header__menu-link">
+              Catalog
+              <img
+                src="../assets/images/homepage/catalog_arrow.svg"
+                alt="catalog arrow"
+              />
+            </a>
+          </li>
+          <li class="header__menu-item">
+            <a href="../html/about.html" class="header__menu-link">About Us</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="../html/contact.html" class="header__menu-link"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="catalog">
+      <div class="catalog__container">
+        <div class="catalog__header">
+          <p class="catalog__results">Showing 1-12 Of 13 Results</p>
+
+          <div class="catalog__controls">
+            <button class="catalog__filter-btn" id="filter-toggle-btn">
+              Filters
+            </button>
+
+            <select class="catalog__sort" id="sort-select">
+              <option value="default">Default Sorting</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Best Rating</option>
+              <option value="popularity">Most Popular</option>
+            </select>
+
+            <div class="catalog__search">
+              <input
+                type="text"
+                class="catalog__search-input"
+                placeholder="Search Models"
+                id="search-input"
+              />
+              <button class="catalog__search-btn" id="search-btn">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M7 13C10.3137 13 13 10.3137 13 7C13 3.68629 10.3137 1 7 1C3.68629 1 1 3.68629 1 7C1 10.3137 3.68629 13 7 13Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M11.5 11.5L15 15"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="catalog__filters" id="filters-panel">
+          <div class="catalog__filters-content">
+            <div class="catalog__filters-row">
+              <div class="catalog__filter-group">
+                <label class="catalog__filter-label" for="filter-size"
+                  >Size</label
+                >
+                <select class="catalog__filter-select" id="filter-size">
+                  <option value="">Choose option</option>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="S-L">S-L</option>
+                  <option value="S, M, XL">S, M, XL</option>
+                </select>
+              </div>
+
+              <div class="catalog__filter-group">
+                <label class="catalog__filter-label" for="filter-color"
+                  >Color</label
+                >
+                <select class="catalog__filter-select" id="filter-color">
+                  <option value="">Choose option</option>
+                  <option value="red">Red</option>
+                  <option value="blue">Blue</option>
+                  <option value="green">Green</option>
+                  <option value="black">Black</option>
+                  <option value="grey">Grey</option>
+                  <option value="yellow">Yellow</option>
+                  <option value="pink">Pink</option>
+                </select>
+              </div>
+
+              <div class="catalog__filter-group">
+                <label class="catalog__filter-label" for="filter-category"
+                  >Category</label
+                >
+                <select class="catalog__filter-select" id="filter-category">
+                  <option value="">Choose option</option>
+                  <option value="carry-ons">Carry-ons</option>
+                  <option value="suitcases">Suitcases</option>
+                  <option value="luggage sets">Luggage Sets</option>
+                  <option value="kids' luggage">Kids' Luggage</option>
+                </select>
+              </div>
+
+              <div class="catalog__filter-group catalog__filter-group--sales">
+                <label for="filter-sales" class="catalog__filter-label">
+                  Sales
+                </label>
+                <input
+                  type="checkbox"
+                  id="filter-sales"
+                  class="catalog__filter-checkbox"
+                />
+                <span class="catalog__filter-checkmark"></span>
+              </div>
+            </div>
+
+            <div class="catalog__filters-buttons">
+              <button
+                class="catalog__filters-btn catalog__filters-btn--clear"
+                id="clear-filters"
+              >
+                CLEAR FILTERS
+              </button>
+              <button
+                class="catalog__filters-btn catalog__filters-btn--hide"
+                id="hide-filters"
+              >
+                HIDE FILTERS
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="catalog__content">
+          <div class="catalog__cards" id="catalog-cards"></div>
+
+          <aside class="catalog__sidebar">
+            <h3 class="catalog__sidebar-title">Top Best Sells</h3>
+            <div class="catalog__best-sells" id="best-sells"></div>
+          </aside>
+        </div>
+
+        <div class="catalog__pagination">
+          <button
+            class="catalog__pagination-btn catalog__pagination-btn--active"
+          >
+            1
+          </button>
+          <button class="catalog__pagination-btn">2</button>
+          <button class="catalog__pagination-btn catalog__pagination-btn--next">
+            NEXT ›
+          </button>
+        </div>
+      </div>
+    </div>
+    <section class="benefits">
+      <img
+        class="benefits__background"
+        src="../assets/images/benefits/waves.jpg"
+        alt="background waves"
+      />
+      <h2 class="benefits__title">Our Benefits</h2>
+
+      <div class="benefits__list">
+        <div class="benefits__item">
+          <img
+            class="benefits__icon"
+            src="../assets/images/benefits/planet.svg"
+            alt="planet"
+          />
+          <p class="benefits__text">
+            Velit nisl sodales eget donec quis. volutpat orci.
+          </p>
+        </div>
+
+        <div class="benefits__item">
+          <img
+            class="benefits__icon"
+            src="../assets/images/benefits/bus.svg"
+            alt="bus"
+          />
+          <p class="benefits__text">
+            Dolor eu varius. Morbi fermentum velit nisl.
+          </p>
+        </div>
+
+        <div class="benefits__item">
+          <img
+            class="benefits__icon"
+            src="../assets/images/benefits/monets.svg"
+            alt="monets"
+          />
+          <p class="benefits__text">
+            Malesuada fames ac ante ipsum primis in faucibus.
+          </p>
+        </div>
+
+        <div class="benefits__item">
+          <img
+            class="benefits__icon"
+            src="../assets/images/benefits/education.svg"
+            alt="education"
+          />
+          <p class="benefits__text">
+            Nisl sodales eget donec quis. volutpat orci.
+          </p>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__left">
+          <div class="footer__top">
+            <div class="footer__block footer__block--about">
+              <h5 class="footer__title">
+                <a href="./about.html">About Us</a>
+              </h5>
+              <ul class="footer__list">
+                <li>Organisation</li>
+                <li>Partners</li>
+                <li>Clients</li>
+              </ul>
+            </div>
+
+            <div class="footer__block footer__block--links">
+              <h5 class="footer__title">Interesting Links</h5>
+              <ul class="footer__list">
+                <li>Photo Gallery</li>
+                <li>Our Team</li>
+                <li>Socials</li>
+              </ul>
+            </div>
+
+            <div class="footer__block footer__block--achievements">
+              <h5 class="footer__title">Achievements</h5>
+              <ul class="footer__list">
+                <li>Winning Awards</li>
+                <li>Press</li>
+                <li>Our Amazing Clients</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer__block footer__block--shipping">
+            <h5 class="footer__title">Shipping Information</h5>
+            <p class="footer__text">
+              Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac.
+              Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec
+              interdum, lectus in convallis pulvinar, enim elit porta sapien,
+              vel finibus erat felis sed neque. Etiam aliquet neque sagittis
+              erat tincidunt aliquam.
+            </p>
+          </div>
+        </div>
+
+        <div class="footer__block footer__block--contact">
+          <h5 class="footer__title">
+            <a href="./contact.html">Contact Us</a>
+          </h5>
+          <p class="footer__text">
+            Bendum dolor eu varius. Morbi fermentum velitsodales egetonec.
+            volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac
+            velitn consequat nec luctus.
+          </p>
+
+          <ul class="footer__contacts">
+            <li>
+              <img src="../assets/images/footer/footer_phone.svg" alt="Phone" />
+              <span>Phone: (+63) 236 6322</span>
+            </li>
+            <li>
+              <img src="../assets/images/footer/footer_mail.svg" alt="Email" />
+              <span>public@news.com</span>
+            </li>
+            <li>
+              <img src="../assets/images/footer/footer_clock.svg" alt="Clock" />
+              <div class="footer__contact-hours">
+                <span>Mon - Fri: 10am - 6pm</span>
+                <span>Sat - Sun: 10am - 6pm</span>
+              </div>
+            </li>
+            <li>
+              <img src="../assets/images/footer/footer_map.svg" alt="Address" />
+              <span>639 Jade Valley, Washington Dc</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">© Copyright 2025</p>
+      </div>
+    </footer>
+    <script src="../js/catalog.js"></script>
+    <script src="../js/burger_button.js"></script>
+    <script src="../js/modal.js"></script>
+  </body>
+</html>

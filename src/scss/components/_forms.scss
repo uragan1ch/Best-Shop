@@ -1,0 +1,201 @@
+.reviews {
+  display: flex;
+  gap: 60px;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+
+  &__list {
+    flex: 1;
+    max-width: 50%;
+    padding-bottom: 30px;
+    border-bottom: 1px solid $color-border-grey;
+  }
+
+  &__list-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+  }
+
+  &__item-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__item-content {
+    flex: 1;
+  }
+
+  &__item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  &__item-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__item-author {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  &__item-date {
+    font-size: 16px;
+    color: $color-text-light;
+  }
+
+  &__item-rating {
+    font-size: 18px;
+    color: $color-star-filled;
+    display: flex;
+
+    .reviews__item-stars-filled {
+      color: $color-star-filled;
+    }
+    .reviews__item-stars-empty {
+      color: #ccc;
+    }
+  }
+
+  &__item-text {
+    font-size: 15px;
+    color: $color-text-light;
+    line-height: 1.55;
+  }
+
+  &__form-container {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  &__form-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  &__form-note {
+    font-size: 14px;
+    color: $color-text-light;
+    margin-bottom: 25px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  &__form-group--rating {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .reviews__form-stars {
+      display: flex;
+      gap: 6px;
+      font-size: 22px;
+      color: $color-star-filled;
+
+      span {
+        cursor: pointer;
+        transition: 0.2s;
+        &.filled {
+          color: $color-star-filled;
+        }
+      }
+    }
+  }
+
+  &__form-input,
+  &__form-textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid $color-primary;
+    background: $white;
+    font-size: 13px;
+    box-sizing: border-box;
+    transition: border-color 0.25s;
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
+  }
+
+  &__form-textarea {
+    min-height: 150px;
+    resize: none;
+  }
+
+  &__form-row {
+    display: flex;
+    gap: 20px;
+
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
+  }
+
+  &__form-group--half {
+    flex: 1;
+  }
+
+  &__form-group--checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .reviews__form-checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: $color-primary;
+    }
+
+    .reviews__form-label-checkbox {
+      font-size: 14px;
+      color: $color-text-light;
+      cursor: pointer;
+    }
+  }
+
+  &__form-submit {
+    background-color: $color-primary;
+    color: #fff;
+    border: none;
+    padding: 14px 35px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.25s;
+    align-self: flex-start;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    flex-direction: column;
+    gap: 40px;
+
+    &__list,
+    &__form-container {
+      max-width: 100%;
+    }
+  }
+}

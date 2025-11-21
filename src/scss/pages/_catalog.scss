@@ -1,0 +1,370 @@
+.catalog {
+  width: 100%;
+  padding: 60px 0;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__results {
+    font-size: 15.2px;
+    color: $black;
+    margin: 0;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__filter-btn {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid $color-border-grey;
+    color: $color-text-dark;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__sort {
+    color: $color-text-dark;
+    padding: 10px 15px;
+    border-color: $color-border-grey;
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 180px;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    border: 1px solid $color-border-grey;
+    overflow: hidden;
+
+    &-input {
+      padding: 10px 15px;
+      border: none;
+      font-size: 15.2px;
+      min-width: 200px;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: $color-text-dark;
+      }
+    }
+
+    &-btn {
+      padding: 10px 15px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: $black;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+  }
+
+  &__filters {
+    max-height: 0;
+    overflow: hidden;
+
+    &--visible {
+      max-height: 500px;
+      opacity: 1;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__filters-content {
+    padding: 30px;
+  }
+
+  &__filters-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &--sales {
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+    }
+  }
+
+  &__filter-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-text-dark;
+  }
+
+  &__filter-select {
+    padding: 10px 15px;
+    border: 1px solid $color-border-grey;
+    font-size: 16px;
+    cursor: pointer;
+
+    &--active {
+      border-color: $color-primary;
+      font-weight: 600;
+    }
+  }
+
+  &__filter-checkbox {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border: 1px solid $color-border-grey;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:checked {
+        background-color: $color-primary;
+        border-color: $color-primary;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 7px;
+          top: 3px;
+          width: 6px;
+          height: 12px;
+          border: solid $white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+
+      &:hover {
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  &__filters-buttons {
+    display: flex;
+    gap: 15px;
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+    }
+  }
+
+  &__filters-btn {
+    @extend .button;
+    padding: 12px 28px;
+    font-size: 15.2px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: 2px solid $color-primary;
+
+    &--clear {
+      background-color: $color-primary;
+      color: $white;
+    }
+
+    &--hide {
+      background-color: $color-primary;
+      color: $white;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      width: 100%;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    align-items: start;
+  }
+
+  &__sidebar-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: $black;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+
+  &__best-sells {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+  }
+
+  &__pagination-btn {
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 15.2px;
+
+    &--active {
+      background-color: $color-primary;
+      color: $white;
+      border-color: $color-primary;
+    }
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    &__content {
+      grid-template-columns: 1fr 280px;
+      gap: 30px;
+    }
+
+    &__cards {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    &__sidebar {
+      margin-top: 40px;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    &__content {
+      grid-template-columns: 1fr;
+    }
+
+    &__sidebar {
+      position: static;
+      order: -1;
+    }
+
+    &__cards {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    &__best-sells {
+      flex-flow: row wrap;
+      gap: 15px;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: 40px 0;
+
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__controls {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    &__filter-btn,
+    &__sort,
+    &__search {
+      width: 100%;
+    }
+
+    &__search-input {
+      flex: 1;
+    }
+
+    &__cards {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    &__sidebar-title {
+      font-size: 17px;
+      margin-bottom: 20px;
+    }
+
+    &__best-sells {
+      gap: 20px;
+    }
+
+    &__pagination {
+      gap: 8px;
+      margin-top: 40px;
+    }
+
+    &__pagination-btn {
+      padding: 10px 16px;
+      font-size: 10px;
+
+      &--next {
+        padding: 10px 20px;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    &__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+}

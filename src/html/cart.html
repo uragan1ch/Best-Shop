@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Cart - BEST SHOP</title>
+    <link rel="stylesheet" href="../../dist/css/style.css" />
+    <link rel="stylesheet" href="../../dist/css/footer.css" />
+    <link rel="stylesheet" href="../../dist/css/header.css" />
+  </head>
+  <div class="modal" id="loginModal">
+    <div class="modal__content">
+      <button class="modal__close" id="closeLoginModal">&times;</button>
+
+      <h2 class="modal__title">LOG IN</h2>
+
+      <form class="modal__form" id="loginForm" novalidate>
+        <label for="emailInput">Email address *</label>
+        <input type="email" id="emailInput" required />
+
+        <p id="validationMessage"></p>
+
+        <label for="passwordInput">Password *</label>
+        <div class="password-field">
+          <input type="password" id="passwordInput" required />
+          <span class="password-toggle" id="togglePasswordBtn">
+            <img
+              id="passwordToggleImg"
+              src="../assets/images/modal/eye.svg"
+              alt="modal eye"
+            />
+          </span>
+        </div>
+
+        <div class="modal__actions">
+          <label class="remember">
+            <input type="checkbox" /> Remember me
+          </label>
+          <a href="#" class="forgot">Forgot Your Password?</a>
+        </div>
+
+        <button type="submit" class="modal__btn">LOG IN</button>
+      </form>
+    </div>
+  </div>
+  <body>
+    <header class="header">
+      <div class="header__top">
+        <div class="header__socials">
+          <a href="#" aria-label="Facebook">
+            <img
+              src="../assets/images/homepage/social/facebook (1).svg"
+              alt="facebook icon"
+            />
+          </a>
+          <a href="#" aria-label="Twitter">
+            <img
+              src="../assets/images/homepage/social/twitter.svg"
+              alt="twitter icon"
+            />
+          </a>
+          <a href="#" aria-label="Instagram">
+            <img
+              src="../assets/images/homepage/social/instagram.svg"
+              alt="instagram icon"
+            />
+          </a>
+        </div>
+
+        <div class="header__logo">
+          <a href="../index.html">
+            <img
+              src="../assets/images/homepage/logo_best_shop.jpg"
+              alt="BEST SHOP logo"
+              class="header__logo-icon"
+            />
+            <h1 class="header__logo-title">BEST SHOP</h1></a
+          >
+        </div>
+
+        <div class="header__actions">
+          <button class="header__btn" id="account-icon" aria-label="Аккаунт">
+            <img src="../assets/images/homepage/user/user.svg" alt="profile" />
+          </button>
+
+          <button class="header__btn" id="cart-icon" aria-label="Корзина">
+            <img
+              src="../assets/images/homepage/user/shopping-cart.svg"
+              alt="user cart"
+            />
+            <span id="cart-counter" class="cart-counter">0</span>
+          </button>
+
+          <button class="header__burger" id="burger" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="header__nav" id="headerNav">
+        <button
+          class="header__close"
+          id="closeMenu"
+          aria-label="Закрыть меню"
+        ></button>
+
+        <ul class="header__menu">
+          <li class="header__menu-item">
+            <a href="../index.html" class="header__menu-link">Home</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="../html/catalog.html" class="header__menu-link">
+              Catalog
+              <img
+                src="../assets/images/homepage/catalog_arrow.svg"
+                alt="catalog arrow"
+              />
+            </a>
+          </li>
+          <li class="header__menu-item">
+            <a href="../html/about.html" class="header__menu-link">About Us</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="../html/contact.html" class="header__menu-link"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section class="cart__hero">
+      <h1 class="cart__title">My Cart</h1>
+      <img
+        src="../assets/images/cart/main_img.jpg"
+        alt="main background img"
+        class="cart__hero-img"
+      />
+    </section>
+
+    <div class="cart">
+      <div class="cart__wrapper">
+        <div class="cart__content">
+          <div class="cart-table">
+            <div class="cart-table__header">
+              <div class="cart-table__col-name">IMAGE</div>
+              <div class="cart-table__col-name">PRODUCT NAME</div>
+              <div class="cart-table__col-name">PRICE</div>
+              <div class="cart-table__col-name">QUANTITY</div>
+              <div class="cart-table__col-name">TOTAL</div>
+              <div class="cart-table__col-name">DELETE</div>
+            </div>
+
+            <div id="cart-items" class="cart-table__items"></div>
+          </div>
+
+          <div class="cart__bottom">
+            <div class="cart-actions">
+              <button
+                class="cart-actions__btn cart-actions__btn--continue"
+                onclick="continueShopping()"
+              >
+                CONTINUE SHOPPING
+              </button>
+
+              <button
+                class="cart-actions__btn cart-actions__btn--clear"
+                onclick="clearCart()"
+              >
+                CLEAR SHOPPING CART
+              </button>
+            </div>
+            <div class="cart-summary">
+              <div class="cart-summary__row">
+                <span class="cart-summary__label">Sub Total</span>
+                <span id="subtotal" class="cart-summary__value">$0</span>
+              </div>
+
+              <div class="cart-summary__row">
+                <span class="cart-summary__label">Shipping</span>
+                <span id="shipping" class="cart-summary__value">$30</span>
+              </div>
+
+              <div class="cart-summary__row" id="discount-row">
+                <span class="cart-summary__label cart-summary__label--discount"
+                  >Discount (10%)</span
+                >
+                <span
+                  id="discount"
+                  class="cart-summary__value cart-summary__value--discount"
+                  >-$0</span
+                >
+              </div>
+
+              <div class="cart-summary__row cart-summary__row--total">
+                <span class="cart-summary__label">Total</span>
+                <span id="total" class="cart-summary__value">$0</span>
+              </div>
+
+              <button class="cart-summary__checkout-btn" onclick="checkout()">
+                CHECKOUT
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="benefits">
+      <img
+        class="benefits__background"
+        src="../assets/images/benefits/waves.jpg"
+        alt="background waves"
+      />
+      <h2 class="benefits__title">Our Benefits</h2>
+
+      <div class="benefits__list">
+        <div class="benefits__item">
+          <img
+            class="benefits__icon"
+            src="../assets/images/benefits/planet.svg"
+            alt="planet"
+          />
+          <p class="benefits__text">
+            Velit nisl sodales eget donec quis. volutpat orci.
+          </p>
+        </div>
+
+        <div class="benefits__item">
+          <img
+            class="benefits__icon"
+            src="../assets/images/benefits/bus.svg"
+            alt="bus"
+          />
+          <p class="benefits__text">
+            Dolor eu varius. Morbi fermentum velit nisl.
+          </p>
+        </div>
+
+        <div class="benefits__item">
+          <img
+            class="benefits__icon"
+            src="../assets/images/benefits/monets.svg"
+            alt="monets"
+          />
+          <p class="benefits__text">
+            Malesuada fames ac ante ipsum primis in faucibus.
+          </p>
+        </div>
+
+        <div class="benefits__item">
+          <img
+            class="benefits__icon"
+            src="../assets/images/benefits/education.svg"
+            alt="education"
+          />
+          <p class="benefits__text">
+            Nisl sodales eget donec quis. volutpat orci.
+          </p>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__left">
+          <div class="footer__top">
+            <div class="footer__block footer__block--about">
+              <h5 class="footer__title">
+                <a href="./about.html">About Us</a>
+              </h5>
+              <ul class="footer__list">
+                <li>Organisation</li>
+                <li>Partners</li>
+                <li>Clients</li>
+              </ul>
+            </div>
+
+            <div class="footer__block footer__block--links">
+              <h5 class="footer__title">Interesting Links</h5>
+              <ul class="footer__list">
+                <li>Photo Gallery</li>
+                <li>Our Team</li>
+                <li>Socials</li>
+              </ul>
+            </div>
+
+            <div class="footer__block footer__block--achievements">
+              <h5 class="footer__title">Achievements</h5>
+              <ul class="footer__list">
+                <li>Winning Awards</li>
+                <li>Press</li>
+                <li>Our Amazing Clients</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer__block footer__block--shipping">
+            <h5 class="footer__title">Shipping Information</h5>
+            <p class="footer__text">
+              Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac.
+              Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec
+              interdum, lectus in convallis pulvinar, enim elit porta sapien,
+              vel finibus erat felis sed neque. Etiam aliquet neque sagittis
+              erat tincidunt aliquam.
+            </p>
+          </div>
+        </div>
+
+        <div class="footer__block footer__block--contact">
+          <h5 class="footer__title">
+            <a href="./contact.html">Contact Us</a>
+          </h5>
+          <p class="footer__text">
+            Bendum dolor eu varius. Morbi fermentum velitsodales egetonec.
+            volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac
+            velitn consequat nec luctus.
+          </p>
+
+          <ul class="footer__contacts">
+            <li>
+              <img src="../assets/images/footer/footer_phone.svg" alt="Phone" />
+              <span>Phone: (+63) 236 6322</span>
+            </li>
+            <li>
+              <img src="../assets/images/footer/footer_mail.svg" alt="Email" />
+              <span>public@news.com</span>
+            </li>
+            <li>
+              <img src="../assets/images/footer/footer_clock.svg" alt="Clock" />
+              <div class="footer__contact-hours">
+                <span>Mon - Fri: 10am - 6pm</span>
+                <span>Sat - Sun: 10am - 6pm</span>
+              </div>
+            </li>
+            <li>
+              <img src="../assets/images/footer/footer_map.svg" alt="Address" />
+              <span>639 Jade Valley, Washington Dc</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">© Copyright 2025</p>
+      </div>
+    </footer>
+
+    <script src="../js/cart.js"></script>
+    <script src="../js/burger_button.js"></script>
+    <script src="../js/modal.js"></script>
+  </body>
+</html>

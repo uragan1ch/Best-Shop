@@ -1,0 +1,243 @@
+@import "../abstracts/variables";
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $white;
+  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
+
+  &__socials {
+    text-decoration: none;
+  }
+
+  &__top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    box-sizing: border-box;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    &-icon {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      display: block;
+    }
+
+    &-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: $color-primary;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    .header__btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+
+      img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+      }
+
+      .cart-counter {
+        position: absolute;
+        top: -6px;
+        right: 5px;
+        background: #fff;
+        color: $color-primary;
+        font-size: 10px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 0 1.5px $color-primary;
+      }
+    }
+  }
+
+  .header__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+
+    span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: $color-primary;
+      border-radius: 2px;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      display: flex;
+    }
+  }
+
+  &__nav {
+    width: 100%;
+    border-top: 1px solid $color-border-grey;
+    padding: 30px 0;
+    transition: 0.3s ease;
+
+    .header__menu {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      list-style: none;
+      padding: 0 30px;
+      margin: 0;
+
+      &-link {
+        font-size: 16px;
+        color: $black;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s ease;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  &__close {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 24px;
+      height: 3px;
+      background: $color-primary;
+      border-radius: 2px;
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    &__socials {
+      display: none;
+    }
+
+    &__logo {
+      &-icon {
+        width: 24px;
+        height: 24px;
+      }
+
+      &-title {
+        font-size: 20px;
+      }
+    }
+
+    &__actions {
+      gap: 10px;
+
+      .header__btn img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &__nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: #fff;
+      transform: translateX(-100%);
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 2px 0 10px rgb(0, 0, 0, 0.1);
+      z-index: 999;
+      padding-top: 60px;
+
+      &.active {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+
+        .header__close {
+          display: block;
+        }
+      }
+
+      .header__menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 0;
+
+        &-link {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+body.no-scroll {
+  overflow: hidden;
+}

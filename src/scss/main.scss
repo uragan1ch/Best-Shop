@@ -1,0 +1,16 @@
+@import "abstracts/variables";
+
+@import "base/reset";
+@import "base/fonts";
+
+@import "components/buttons";
+@import "components/forms";
+@import "components/product-card";
+@import "components/modal";
+
+@import "pages/_home";
+@import "pages/about";
+@import "pages/cart";
+@import "pages/catalog";
+@import "pages/contact";
+@import "pages/product-details";

@@ -1,0 +1,226 @@
+.contact {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0 20px;
+  color: #fff;
+
+  @media (max-width: $breakpoint-md) {
+    height: 300px;
+  }
+
+  &__bg {
+    position: absolute;
+    z-index: -1;
+    filter: brightness(60%);
+  }
+
+  &__title {
+    position: relative;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 36px;
+    }
+  }
+
+  &__text {
+    position: relative;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 5px 0;
+    z-index: 1;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 16px;
+    }
+  }
+}
+
+.feedback {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 80px 100px;
+  text-align: center;
+
+  &__item {
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: $black;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: $black;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 20px;
+    align-items: center;
+  }
+}
+
+.form-section {
+  padding: 80px 0;
+  background-color: #fff;
+
+  @media (max-width: $breakpoint-lg) {
+    padding: 60px 0;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+
+    @media (max-width: $breakpoint-lg) {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  &__image {
+    flex: 0 0 45%;
+    width: 45%;
+    min-height: 500px;
+    overflow: hidden;
+
+    @media (max-width: $breakpoint-lg) {
+      flex: 0 0 100%;
+      width: 100%;
+      min-height: 400px;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      min-height: 300px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__form-wrapper {
+    flex: 0 0 45%;
+    width: 45%;
+    max-width: 600px;
+    padding: 0;
+
+    @media (max-width: $breakpoint-lg) {
+      flex: 0 0 100%;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: $black;
+    line-height: 1.2;
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 20px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 28px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    color: $black;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: $black;
+    text-align: left;
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    color: $black;
+    background-color: transparent;
+    border: 2px solid $color-primary;
+    border-radius: 0;
+    font-family: inherit;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__textarea {
+    min-height: 90px;
+    resize: vertical;
+    font-family: inherit;
+
+    @media (max-width: $breakpoint-md) {
+      min-height: 120px;
+    }
+  }
+
+  &__button {
+    @extend .button;
+    align-self: flex-start;
+    padding: 14px 40px;
+    font-size: 15px;
+    letter-spacing: 1px;
+
+    @media (max-width: $breakpoint-md) {
+      width: 100%;
+      padding: 16px 40px;
+    }
+  }
+}
