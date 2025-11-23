@@ -14,14 +14,7 @@ async function loadProductsData() {
 
     renderCart();
   } catch (error) {
-    console.error("Ошибка при загрузке или обработке данных:", error);
-
-    document.getElementById("cart-items").innerHTML = `
-        <div class="empty-cart">
-            <h2>Не удалось загрузить данные</h2>
-            <p>Проверьте путь (../assets/data.json) и формат JSON-файла.</p>
-       </div>`;
-    updateSummary();
+    console.error(error);
   }
 }
 
@@ -57,7 +50,7 @@ function renderCart() {
   const cartItemsContainer = document.getElementById("cart-items");
 
   if (productsData.length === 0 && cart.length > 0) {
-    cartItemsContainer.innerHTML = "<div>Загрузка товаров...</div>";
+    cartItemsContainer.innerHTML = "<div>Download...</div>";
     return;
   }
 

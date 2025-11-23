@@ -48,19 +48,19 @@ loginForm.addEventListener("submit", (e) => {
   validationMessage.style.display = "none";
 
   if (!passwordValue) {
-    validationMessage.textContent = "Ошибка: Пожалуйста, введите пароль.";
+    validationMessage.textContent = "Error: enter the correct pass.";
     validationMessage.style.display = "block";
     isValid = false;
   }
 
   if (isValid && !emailRegex.test(emailValue)) {
-    validationMessage.textContent = "Ошибка: Неверный формат Email.";
+    validationMessage.textContent = "Error: enter the correct pass.";
     validationMessage.style.display = "block";
     isValid = false;
   }
 
   if (isValid) {
-    alert("Вход выполнен успешно!");
+    alert("Login successful!");
     loginModal.style.display = "none";
     loginForm.reset();
     passwordInput.setAttribute("type", "password");

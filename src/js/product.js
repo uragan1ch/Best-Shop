@@ -101,7 +101,6 @@ function addToCart(product, quantity, size, color) {
     return;
   }
 
-  // Если такого товара нет в корзине
   cart.push({
     id: product.id,
     name: product.name,
@@ -327,8 +326,6 @@ function setupReviewForm() {
 
   reviewForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    // formData удалена, так как нигде не используется
 
     reviewForm.reset();
     currentRating = 0;
