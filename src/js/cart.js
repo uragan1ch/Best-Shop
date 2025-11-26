@@ -174,7 +174,7 @@ function updateSummary() {
 }
 
 function continueShopping() {
-  window.location.href = "../index.html";
+  window.location.href = "../../index.html";
 }
 
 function checkout() {
